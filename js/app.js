@@ -3,14 +3,12 @@ angular.module('NoteWrangler', ['ngRoute'])
   $routeProvider
   .when('/notes', {
       templateUrl: 'templates/pages/notes/index.html',
-      controller: ['$http',function($http){
-        var thisCtrl = this;
+      controller: ['$http','$scope',function($http,$scope){
         $http({method:'get',url:'/notes'})
         .success(function(response){
-          thisCtrl.notes = response;
+          $scope.notes = response;
         });
-      }],
-      controllerAs :'notesCtrl'
+      }]
   })
   .when('/users', {
       templateUrl: 'templates/pages/users/index.html'

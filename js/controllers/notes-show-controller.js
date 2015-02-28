@@ -1,8 +1,7 @@
 angular.module('NoteWrangler')
-.controller('NotesShowController', ['$routeParams','$http',function($routeParams,$http) {
-    thisCtrl = this;
+.controller('NotesShowController', ['$routeParams','$http','$scope',function($routeParams, $http, $scope) {
   $http({method:'get',url:'/notes/'+$routeParams.id})
   .success(function(response){
-    thisCtrl.note = response;
+    $scope.note = response;
   });
 }]);
