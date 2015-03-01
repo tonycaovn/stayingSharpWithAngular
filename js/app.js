@@ -1,4 +1,4 @@
-angular.module('NoteWrangler', ['ngRoute'])
+angular.module('NoteWrangler', ['ngRoute','ngResource'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
   .when('/notes', {
@@ -28,4 +28,7 @@ angular.module('NoteWrangler', ['ngRoute'])
   .otherwise({
     redirectTo: '/notes'
     });
-}]);
+}])
+.config(function(TweetableProvider){
+  TweetableProvider.setLength(40);
+});
